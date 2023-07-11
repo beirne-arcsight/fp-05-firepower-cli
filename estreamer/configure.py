@@ -130,7 +130,7 @@ class Configure( object ):
 
         parser.add_argument(
             '--output',
-            help = 'splunk | cef | cef2 | json')
+            help = 'splunk | cef | cef2 | cef3 | json')
 
         parser.add_argument(
             '--bookmark',
@@ -230,6 +230,21 @@ class Configure( object ):
                             "rotate": True
                         },
                         "uri": "relfile:///data/cef2/encore{0}.cef"
+                    }
+                }
+            ])
+
+        if output == 'cef3':
+            self._set( Configure.JSON_PATH_OUTPUT, [
+                {
+                    "adapter": "cef3",
+                    "enabled": True,
+                    "stream": {
+                        "options": {
+                            "maxLogs": 10000,
+                            "rotate": True
+                        },
+                        "uri": "relfile:///data/cef3/encore{0}.cef"
                     }
                 }
             ])
